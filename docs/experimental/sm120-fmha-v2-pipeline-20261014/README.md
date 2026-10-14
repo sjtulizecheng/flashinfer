@@ -15,9 +15,23 @@
 
 **[下载四页合一的 draw.io 文件](./fmha-v2-pipeline-all.drawio)**：在 GitHub 文件页选择 Download raw file，随后在 [diagrams.net](https://app.diagrams.net/) 中选择“文件 → 从设备打开”，也可用 draw.io 桌面版打开。底部标签切换四页。
 
-新增单页直接复用 `cta-pipeline.drawio` 的生成函数，在 load → QK → softmax → PV → 写回之前补一个 QKV 准备 stage，保留第 33 个 KV tile 的周期时间条与异步预取窗口。量化前的 RoPE、cache 处理和 `kv_b_proj` 作为上游说明列出，没有独立计时，不包含在准备与 attention 的连跑实测中。准备框内的 ms 是量化、拼接及布局写入耗时；下方 cycles 是单 CTA 打点样本，二者不拼成同一个时间轴。
+新增单页沿用 `cta-pipeline.drawio` 的样式，在 load → QK → softmax → PV → 写回之前补一个 QKV 准备 stage。下方实测时间轴已经包含 prepare：从 prepare 起点开始，用同一次 CUDA Graph 重放的 GPU `%globaltimer` 记录，将 prepare 区间、Attention 整体区间和所选 CTA 的阶段对齐到 µs。再放大同一份记录中的第 33 个 KV tile，显示 QK、softmax、PV 与异步预取窗口。没有把旧版 prepare 的独立毫秒单测硬换算成 `clock64` 周期。
+
+量化前的 RoPE、cache 处理和 `kv_b_proj` 作为上游说明列出，没有独立计时，不包含在准备与 attention 的连跑实测中。流程框内的 ms 仍引用原无打点测量；下方时间轴是本次带打点的观测，不用于替换原性能收益。黄色 prepare 是整个多 kernel 准备区间；彩色细条是单个 CTA 的 warp 0；灰色背景是 Attention 内未展开的工作，不代表 GPU 空闲。
 
 `cta-pipeline-with-preparation.drawio` 使用标准的未压缩 `mxfile → diagram → mxGraphModel` XML，与原 CTA 图共用原生方框、箭头、时间条，不使用上一版的嵌套卡片。文字、方框和时间条都可编辑。旧文件名 [pipeline-with-preparation.drawio](./pipeline-with-preparation.drawio) 保留为相同内容，方便已有链接继续使用。图比较初版与 dev-3 的已有动态量化路径，不包含尚未对照测试的固定 scale=1 方案。
+
+**prepare 与 CTA 的联合采样**
+
+| 版本 | prepare 区间 (µs) | Attention 区间 (µs) | 连跑区间 (µs) |
+|---|---:|---:|---:|
+| 初版 | 308.192 | 866.720 | 1174.912 |
+| TMA 中间版 | 317.184 | 460.896 | 778.080 |
+| dev-3 | 138.240 | 472.960 | 611.200 |
+
+每版采集 7 次，从连跑跨度居中的一次画图。表内同一行来自同一次运行，prepare 与 Attention 区间可以相加；区间包含边界 marker 与图调度开销。三个版本的打点输出均与各自无打点内核逐 bit 一致。打点会改变执行开销，原无打点 `latency.json` 仍是性能收益依据。
+
+复现脚本：[measure_joint_timeline.py](./measure_joint_timeline.py)。在已有诊断 worktree 的隔离副本上应用 [joint-globaltimer.patch](./joint-globaltimer.patch)，仅将 CTA 的 `%clock64` 读取替换为 `%globaltimer`，沿用原事件位置；脚本在 prepare 前后和 Attention 后各放一个 GPU marker，在同一 CUDA Graph 中采集。脚本依赖与 `measure.py` 相同的本机激活文件、适配器和干净库，并通过 `--source-root` 指定三个隔离源码目录；未修改生产内核或服务。结果：[汇总](./joint-timeline-summary.json)、[初版原始记录](./joint-timeline-baseline.json.gz)、[TMA 原始记录](./joint-timeline-tma_padded.json.gz)、[dev-3 原始记录](./joint-timeline-dev3.json.gz)。
 
 draw.io 版从同一份测量数据重建，文字、方框、箭头、柱形和时间条均为原生可编辑对象。完整 CTA 时间线按版本分层、按 warp 分组；进入分组后可以选择单个阶段，悬停或右键“编辑数据”可查看其版本、warp、step、起止周期和持续周期。异步窗口用虚线框表示。为了适合编辑，布局重新排版，数值与样本选择保持一致。手动拉伸时间条或修改标签不会自动重算数据；原始测量仍以 JSON 为准。
 
@@ -60,6 +74,10 @@ TMA 中间版是已经优化 attention 内核、仍保留旧准备流程的历�
 **一个 CTA 到底做什么**
 
 一个 CTA 处理一个 head 的 64 个 Q token，共 128 threads / 4 warps。对每块 64-token KV，执行 `QK MMA → scale/mask → online softmax → P 转 FP8 → PV MMA`，最后归一化并写回 O。online softmax 会维护跨 KV 块的最大值与指数和，并重缩放此前累积的 O。QK 和 PV 都使用 FP8×FP8 Tensor Core MMA、FP32 累加；softmax 主要是 FP32 的归约、指数等操作。
+
+图中 Q = KV = 4096 指 query 与 KV 各有 4096 个 token，不是向量维度；head 0 / 最后 64 个 Q token 指观察第 0 个 head、负责 query 4032～4095 输出的 CTA。每轮读取 64 个 KV token，因此这个 CTA 遍历 64 轮。最后一轮仍应用 causal mask，不能看未来位置。两个融合准备 kernel 是两次独立启动：一个处理 Q 的 scale / FP8 量化 / 布局，另一个融合 K_nope/K_rope 拼接及 K/V 的 scale / FP8 量化 / 布局；它们在 attention CTA 运行前完成。
+
+最终 O 归一化发生在这个 CTA 的 KV 循环结束后。每轮 online softmax 会更新最大值、指数和并重缩放 / 累加 O；遍历完所需的 KV tile 后，`final_update` 才用累计分母归一化，并在分块量化路径恢复 V 的缩放，随后写回 BF16。
 
 - 初版：已经使用 cp.async 预取，但 Q/K 按 4 个深度切片加载、计算，PV 分 2 片，切片间存在等待和同步，Q 也重复装载。
 - 优化版：TMA 初始搬入完整 Q/K；Q 加载到寄存器后跨 KV 轮次复用。计算 QK 前发起当前 V 的 TMA；读完 K 并同步后发起下一块 K，让它与 softmax、PV 等工作形成重叠窗口。V 按 fragment 读取以控制寄存器使用。

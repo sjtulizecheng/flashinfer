@@ -1,6 +1,8 @@
 """Export the measured diagrams as editable draw.io shapes (no embedded images)."""
 
 import base64
+import gzip
+import json
 import math
 import xml.etree.ElementTree as ET
 import zlib
@@ -16,6 +18,7 @@ from visualize import (
     bycase,
     latency,
     parse_trace,
+    partition_timestamps,
 )
 
 INK = "#243247"
@@ -360,11 +363,269 @@ def trace_bar(
         )
 
 
+def joint_timeline(page):
+    """Place prepare and selected-CTA stamps on the same measured GPU clock."""
+    samples = {}
+    for version in VERSIONS:
+        data = json.loads(
+            gzip.decompress((ROOT / f"joint-timeline-{version}.json.gz").read_bytes())
+        )
+        chosen = data["samples"][data["sample"]]
+        d = {(r["warp"], r["step"], r["event"]): r["ns"] for r in chosen["records"]}
+        samples[version] = (
+            chosen["boundaries_ns"],
+            d,
+            partition_timestamps(d, version),
+        )
+    page.text(
+        36, 697, 2088, 38, "实测时间轴：prepare 已接入同一条 GPU 流水线", 27, True
+    )
+    page.text(
+        36,
+        743,
+        2088,
+        40,
+        "统一读取 GPU globaltimer，单位 µs；黄色是一整个 prepare 区间，后接 Attention 内所选 CTA 的真实阶段。",
+        20,
+        color=MUTED,
+    )
+    x0, width = 235, 1720
+    xmax = (
+        math.ceil(max((b[2] - b[0]) / 1000 for b, _, _ in samples.values()) / 200) * 200
+    )
+    scale = width / (xmax * 1000)
+    for i, version in enumerate(VERSIONS):
+        (t0, t1, t2), d, partition = samples[version]
+        y = 820 + i * 175
+        layer = page.layer(NAMES[i] + "：prepare + CTA，GPU globaltimer")
+        page.text(36, y + 20, 185, 42, NAMES[i], 20, True, layer)
+        for us in range(0, int(xmax) + 1, 100):
+            x = x0 + us * 1000 * scale
+            page.line(x, y - 8, x, y + 114)
+            if i == 2:
+                page.text(x - 15, y + 121, 80, 26, str(us), 16)
+        end_x = x0 + (t2 - t0) * scale
+        prep_x = x0 + (t1 - t0) * scale
+        page.rect(
+            prep_x,
+            y,
+            (t2 - t1) * scale,
+            48,
+            fill="#edf1f5",
+            stroke="#c4ced9",
+            parent=layer,
+            metadata={
+                "variant": version,
+                "start_ns": t1 - t0,
+                "end_ns": t2 - t0,
+                "tooltip": "Attention 全部 CTA 所在区间；灰色表示未展开的工作，不代表 GPU 空闲。",
+            },
+        )
+        page.rect(
+            x0,
+            y,
+            (t1 - t0) * scale,
+            48,
+            f"prepare  {(t1 - t0) / 1000:.1f} µs",
+            "#f2c66d",
+            "#bd8824",
+            21,
+            layer,
+            metadata={
+                "variant": version,
+                "stage": "prepare",
+                "start_ns": 0,
+                "end_ns": t1 - t0,
+                "duration_ns": t1 - t0,
+                "tooltip": f"完整 prepare 区间：{(t1 - t0) / 1000:.3f} µs，包含边界打点/调度开销。",
+            },
+        )
+        for step in [0, *range(1, 65), 127]:
+            for start, end, kind in partition(step):
+                if end > start:
+                    page.rect(
+                        x0 + (start - t0) * scale,
+                        y,
+                        (end - start) * scale,
+                        48,
+                        fill=COLORS[kind],
+                        parent=layer,
+                        metadata={
+                            "variant": version,
+                            "warp": 0,
+                            "step": step,
+                            "stage": kind,
+                            "start_ns": start - t0,
+                            "end_ns": end - t0,
+                            "duration_ns": end - start,
+                            "tooltip": f"{version} | warp 0 | KV step {step} | {kind}\n"
+                            f"{(start - t0) / 1000:.3f} → {(end - t0) / 1000:.3f} µs",
+                        },
+                    )
+        page.text(
+            end_x + 12, y + 7, 165, 37, f"{(t2 - t0) / 1000:.1f} µs", 21, True, layer
+        )
+        cta_start, cta_end = d[0, 0, 0], d[0, 127, 4]
+        page.rect(
+            x0 + (cta_start - t0) * scale,
+            y + 55,
+            (cta_end - cta_start) * scale,
+            32,
+            "所选 CTA · 64 轮 KV",
+            "#ffffff",
+            VCOLORS[i],
+            16,
+            layer,
+            extra="dashed=1;strokeWidth=2;",
+        )
+        page.text(
+            prep_x,
+            y + 90,
+            end_x - prep_x,
+            27,
+            f"Attention 整体区间：{(t2 - t1) / 1000:.1f} µs（其它 CTA 同时运行）",
+            18,
+            parent=layer,
+            color=MUTED,
+        )
+    page.text(
+        x0,
+        1330,
+        1720,
+        30,
+        "从 prepare 起点开始的实际 GPU 时间（µs）；三行使用相同比例，包含打点开销。",
+        20,
+    )
+    page.text(
+        36,
+        1380,
+        2088,
+        42,
+        "下方放大同一次运行的第 33 个 KV tile。prepare 不在每一轮重复；它已经完整画在上方时间轴的最左侧。",
+        22,
+        True,
+    )
+    zoom_max = max(
+        (max(d[0, 33, 44], d[0, 34, 22]) if v != "baseline" else d[0, 33, 44])
+        - d[0, 33, 0]
+        for v, (_, d, _) in samples.items()
+    )
+    zoom_max = math.ceil(zoom_max / 500) * 500
+    zoom_scale = 1720 / zoom_max
+    for i, version in enumerate(VERSIONS):
+        (t0, _, _), d, partition = samples[version]
+        origin = d[0, 33, 0]
+        y = 1490 + i * 155
+        layer = page.layer(NAMES[i] + "：联合采样的第 33 轮放大")
+        page.text(36, y - 4, 185, 38, NAMES[i], 19, True, layer)
+        page.text(
+            36,
+            y + 37,
+            185,
+            43,
+            f"全程 {(origin - t0) / 1000:.3f} µs\n处的这一轮",
+            16,
+            parent=layer,
+            color=MUTED,
+        )
+        for ns in range(0, int(zoom_max) + 1, 500):
+            x = x0 + ns * zoom_scale
+            page.line(x, y - 9, x, y + 115)
+            if i == 2:
+                page.text(x - 12, y + 122, 72, 26, f"{ns / 1000:g}", 16)
+        for start, end, kind in partition(33):
+            if end > start:
+                w = (end - start) * zoom_scale
+                label = (
+                    {"qk": "QK", "softmax": "softmax", "pv": "PV"}.get(kind, "")
+                    if w > 80
+                    else ""
+                )
+                page.rect(
+                    x0 + (start - origin) * zoom_scale,
+                    y,
+                    w,
+                    35,
+                    label,
+                    COLORS[kind],
+                    size=17,
+                    parent=layer,
+                    extra="fontColor=#ffffff;spacing=0;",
+                    metadata={
+                        "variant": version,
+                        "stage": kind,
+                        "step": 33,
+                        "duration_ns": end - start,
+                        "tooltip": f"{kind}: {(end - start) / 1000:.3f} µs",
+                    },
+                )
+        windows = (
+            [
+                (21, 33, 32, "V 首片：issue → wait", "load"),
+                (31, 33, 42, "V 尾片：issue → wait", "load"),
+            ]
+            if version == "baseline"
+            else [
+                (21, 33, 42, "整块 V：issue → wait", "load"),
+                (25, 34, 22, "下一块 K：issue → 下一轮 wait", "qk"),
+            ]
+        )
+        for j, (a, step, b, label, kind) in enumerate(windows):
+            start, end = d[0, 33, a], d[0, step, b]
+            page.rect(
+                x0 + (start - origin) * zoom_scale,
+                y + 45 + j * 36,
+                (end - start) * zoom_scale,
+                27,
+                label,
+                "#ffffff",
+                COLORS[kind],
+                16,
+                layer,
+                extra="dashed=1;strokeWidth=2;",
+            )
+    page.text(
+        x0,
+        1972,
+        1800,
+        30,
+        "距这一轮开始的 GPU 时间（µs）；放大图与上方全程来自同一份 globaltimer 记录。",
+        19,
+    )
+    page.legend(36, 2030, list(COLORS), columns=4, width=520)
+    page.text(
+        36,
+        2130,
+        2088,
+        36,
+        "黄色 prepare：整个准备阶段；彩色细条：一个 CTA 的 warp 0；灰色背景：Attention 内未展示的工作。",
+        20,
+    )
+    page.text(
+        36,
+        2175,
+        2088,
+        40,
+        "globaltimer 可跨 kernel / SM 对齐；原 clock64 仅用于 CTA 内周期。不能按固定 GPU 频率把旧单测毫秒数拼到 clock64 上。",
+        19,
+        color=MUTED,
+    )
+    page.text(
+        36,
+        2220,
+        2088,
+        42,
+        "这是带打点的观测样本；性能收益仍以上方无打点实测为准。异步框是 issue→wait 窗口，不是 DMA 精确时长。",
+        19,
+        color=MUTED,
+    )
+
+
 def cta_pipeline(traces, include_preparation=False):
     page = Page(
         "04 准备与 CTA 单轮流水线" if include_preparation else "02 CTA 阶段与单轮放大",
         2160 if include_preparation else 1800,
-        1710 if include_preparation else 1520,
+        2290 if include_preparation else 1520,
     )
     shift = 160 if include_preparation else 0
     page.title(
@@ -462,6 +723,8 @@ def cta_pipeline(traces, include_preparation=False):
             COLORS["softmax"],
             21,
         )
+        joint_timeline(page)
+        return page
     page.text(
         36,
         523 + shift,

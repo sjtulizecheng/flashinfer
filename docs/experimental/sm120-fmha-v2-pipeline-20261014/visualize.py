@@ -208,24 +208,7 @@ def overview():
     save(fig, "pipeline-overview")
 
 
-def parse_trace(version, case="dense4096"):
-    path = ROOT / f"trace-{version}-{case}.json"
-    data = json.loads(
-        path.read_text()
-        if path.exists()
-        else gzip.decompress(path.with_suffix(".json.gz").read_bytes())
-    )
-
-    def span(records):
-        a = [r["cycles"] for r in records if r["step"] == 0 and r["event"] == 0]
-        b = [r["cycles"] for r in records if r["step"] == 127 and r["event"] == 4]
-        return max(b) - min(a)
-
-    spans = [span(r) for r in data["traces"]]
-    idx = sorted(range(len(spans)), key=lambda i: spans[i])[len(spans) // 2]
-    records = data["traces"][idx]
-    d = {(r["warp"], r["step"], r["event"]): r["cycles"] for r in records}
-
+def partition_timestamps(d, version):
     # Partition a warp's observed intervals; these include observer overhead.
     def partition(step, warp=0):
         e = {
@@ -276,6 +259,29 @@ def parse_trace(version, case="dense4096"):
             result.append((e[a], e[b], kind))
             cursor = e[b]
         return result
+
+    return partition
+
+
+def parse_trace(version, case="dense4096"):
+    path = ROOT / f"trace-{version}-{case}.json"
+    data = json.loads(
+        path.read_text()
+        if path.exists()
+        else gzip.decompress(path.with_suffix(".json.gz").read_bytes())
+    )
+
+    def span(records):
+        a = [r["cycles"] for r in records if r["step"] == 0 and r["event"] == 0]
+        b = [r["cycles"] for r in records if r["step"] == 127 and r["event"] == 4]
+        return max(b) - min(a)
+
+    spans = [span(r) for r in data["traces"]]
+    idx = sorted(range(len(spans)), key=lambda i: spans[i])[len(spans) // 2]
+    records = data["traces"][idx]
+    d = {(r["warp"], r["step"], r["event"]): r["cycles"] for r in records}
+
+    partition = partition_timestamps(d, version)
 
     summary = {
         "variant": version,

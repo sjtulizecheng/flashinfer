@@ -1,0 +1,83 @@
+{
+  "baseline": {
+    "variant": "baseline",
+    "case": "dense4096",
+    "clock": "GPU %globaltimer",
+    "unit": "nanoseconds",
+    "sample": 5,
+    "outputs_bitwise_equal": true,
+    "summary_us": {
+      "prepare_interval": 308.192,
+      "attention_interval": 866.72,
+      "pipeline_interval": 1174.912,
+      "selected_cta_start": 309.12,
+      "selected_cta_end": 472.064,
+      "tile33_start_warp0": 389.76,
+      "tile33_end_warp0": 392.032
+    },
+    "observer_ms": {
+      "clean_pipeline": 1.0955070642324594,
+      "instrumented_pipeline": 1.1818392038345338
+    },
+    "notes": [
+      "Markers and selected-CTA stamps share GPU globaltimer; no SM-frequency conversion.",
+      "Prepare is a whole multi-kernel interval, not a single CTA duration.",
+      "Boundary intervals include marker and graph dispatch overhead.",
+      "Instrumentation changes execution; original latency.json remains the speedup source."
+    ]
+  },
+  "tma_padded": {
+    "variant": "tma_padded",
+    "case": "dense4096",
+    "clock": "GPU %globaltimer",
+    "unit": "nanoseconds",
+    "sample": 1,
+    "outputs_bitwise_equal": true,
+    "summary_us": {
+      "prepare_interval": 317.184,
+      "attention_interval": 460.896,
+      "pipeline_interval": 778.08,
+      "selected_cta_start": 318.432,
+      "selected_cta_end": 456.384,
+      "tile33_start_warp0": 387.52,
+      "tile33_end_warp0": 389.664
+    },
+    "observer_ms": {
+      "clean_pipeline": 0.7607502284802888,
+      "instrumented_pipeline": 0.784993420706855
+    },
+    "notes": [
+      "Markers and selected-CTA stamps share GPU globaltimer; no SM-frequency conversion.",
+      "Prepare is a whole multi-kernel interval, not a single CTA duration.",
+      "Boundary intervals include marker and graph dispatch overhead.",
+      "Instrumentation changes execution; original latency.json remains the speedup source."
+    ]
+  },
+  "dev3": {
+    "variant": "dev3",
+    "case": "dense4096",
+    "clock": "GPU %globaltimer",
+    "unit": "nanoseconds",
+    "sample": 6,
+    "outputs_bitwise_equal": true,
+    "summary_us": {
+      "prepare_interval": 138.24,
+      "attention_interval": 472.96,
+      "pipeline_interval": 611.2,
+      "selected_cta_start": 140.224,
+      "selected_cta_end": 282.08,
+      "tile33_start_warp0": 212.064,
+      "tile33_end_warp0": 214.336
+    },
+    "observer_ms": {
+      "clean_pipeline": 0.61203906138738,
+      "instrumented_pipeline": 0.6330825764199961
+    },
+    "notes": [
+      "Markers and selected-CTA stamps share GPU globaltimer; no SM-frequency conversion.",
+      "Prepare is a whole multi-kernel interval, not a single CTA duration.",
+      "Boundary intervals include marker and graph dispatch overhead.",
+      "Instrumentation changes execution; original latency.json remains the speedup source."
+    ]
+  }
+}

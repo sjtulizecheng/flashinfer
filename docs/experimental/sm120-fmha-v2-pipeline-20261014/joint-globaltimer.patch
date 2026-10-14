@@ -1,0 +1,16 @@
+--- a/csrc/fmha_v2/fmha/cta_trace.h
++++ b/csrc/fmha_v2/fmha/cta_trace.h
+@@ -1,11 +1,11 @@
+-// Diagnostic-only clock64 recording; not part of production dispatch.
++// Diagnostic-only globaltimer recording (nanoseconds); not part of production dispatch.
+ #pragma once
+ #define FI_CTA_STAMP(SLOT, EVENT)                                                   \
+   do {                                                                            \
+     if ((threadIdx.x & 31) == 0 && params.cta_trace != nullptr && bidb == 0 &&        \
+         bidh == 0 && q_loop == (params.s - 1) / 64) {                               \
+       uint64_t trace_clock;                                                       \
+-      asm volatile("mov.u64 %0, %%clock64;" : "=l"(trace_clock) : : "memory");       \
++      asm volatile("mov.u64 %0, %%globaltimer;" : "=l"(trace_clock) : : "memory");       \
+       params.cta_trace[((threadIdx.x >> 5) * 128 + (SLOT)) * 48 + (EVENT)] =          \
+           trace_clock;                                                            \
+     }                                                                             \
