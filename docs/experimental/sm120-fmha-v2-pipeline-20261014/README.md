@@ -4,6 +4,8 @@
 
 这里“优化前”指最初 FMHA-v2，不是之前的另一套原融合 FP8 内核。本次未重新测原融合 FP8，也未进行服务 QPS 压测。
 
+**[逐项优化说明：原来怎么做、为什么没做、修改代码与收益证据](./OPTIMIZATION_DETAILS.md)**
+
 **图与源数据**
 
 - 整个算子流水线与无打点耗时：[pipeline-overview.png](./pipeline-overview.png) · [pipeline-overview.svg](./pipeline-overview.svg)
