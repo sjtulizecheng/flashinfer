@@ -8,13 +8,18 @@
 
 **图与源数据**
 
+- 含量化前准备的整体流程（单页大字版）：[清晰预览](./pipeline-with-preparation.png) · [可编辑 draw.io](./pipeline-with-preparation.drawio)
 - 整个算子流水线与无打点耗时：[pipeline-overview.png](./pipeline-overview.png) · [pipeline-overview.svg](./pipeline-overview.svg) · [可编辑 draw.io](./pipeline-overview.drawio)
 - CTA 阶段示意与单轮 KV 实测放大：[cta-pipeline.png](./cta-pipeline.png) · [cta-pipeline.svg](./cta-pipeline.svg) · [可编辑 draw.io](./cta-pipeline.drawio)
 - 同一 CTA 的全部 4 个 warp、64 轮 KV 和写回：[cta-full-timeline.png](./cta-full-timeline.png) · [矢量图下载（SVG gzip）](./cta-full-timeline.svg.gz) · [可编辑 draw.io](./cta-full-timeline.drawio)
 
-**[下载三页合一的 draw.io 文件](./fmha-v2-pipeline-all.drawio)**：在 GitHub 文件页选择 Download raw file，随后在 [diagrams.net](https://app.diagrams.net/) 中选择“文件 → 从设备打开”，也可用 draw.io 桌面版打开。底部标签切换三页。
+**[下载四页合一的 draw.io 文件](./fmha-v2-pipeline-all.drawio)**：在 GitHub 文件页选择 Download raw file，随后在 [diagrams.net](https://app.diagrams.net/) 中选择“文件 → 从设备打开”，也可用 draw.io 桌面版打开。底部标签切换四页。
+
+新增的单页流程将 RoPE、cache 写入 / 条件性前缀读取、`kv_b_proj` 展开合并成一个量化前 stage。这部分没有独立耗时记录，标为“— 未单独测量”，不包含在准备与 attention 的连跑实测中。图中的准备单测是 Q/K/V 量化、拼接及布局写入，不能误读为 `kv_b_proj` 的耗时。图只比较初版与 dev-3 的已有动态量化路径，不包含尚未对照测试的固定 scale=1 方案。
 
 draw.io 版从同一份测量数据重建，文字、方框、箭头、柱形和时间条均为原生可编辑对象。完整 CTA 时间线按版本分层、按 warp 分组；进入分组后可以选择单个阶段，悬停或右键“编辑数据”可查看其版本、warp、step、起止周期和持续周期。异步窗口用虚线框表示。为了适合编辑，布局重新排版，数值与样本选择保持一致。手动拉伸时间条或修改标签不会自动重算数据；原始测量仍以 JSON 为准。
+
+![含量化前准备的整体流程](./pipeline-with-preparation.png)
 
 ![优化前后算子流水线](./pipeline-overview.png)
 
@@ -110,4 +115,4 @@ TMA 中间版是已经优化 attention 内核、仍保留旧准备流程的历�
 
 `visualize.py` 可从本目录压缩后的 trace 与汇总 JSON 重画图，无需 GPU。中文字体使用已安装的 Noto Sans CJK SC / Noto Sans SC，或通过 `FMHA_PIPELINE_FONT` 指定字体文件；本目录不附带字体。报告中的 PNG 可直接在 GitHub 查看，SVG 可下载。
 
-[export_drawio.py](./export_drawio.py) 复用 `visualize.py` 的数据和 trace 分段逻辑，生成三个独立 `.drawio` 文件及三页合一文件，无需 GPU。使用 draw.io 标准压缩 XML 保存；解压后为原生 mxGraph 图元，未嵌入 PNG/SVG 图片。编辑器使用本机中文字体显示文本。
+[export_drawio.py](./export_drawio.py) 复用 `visualize.py` 的数据和 trace 分段逻辑，生成四个独立 `.drawio` 文件及四页合一文件，无需 GPU。使用 draw.io 标准压缩 XML 保存；解压后为原生 mxGraph 图元，未嵌入 PNG/SVG 图片。编辑器使用本机中文字体显示文本。新增单页的 PNG 是实际 draw.io 图元渲染的预览。
