@@ -8,9 +8,13 @@
 
 **图与源数据**
 
-- 整个算子流水线与无打点耗时：[pipeline-overview.png](./pipeline-overview.png) · [pipeline-overview.svg](./pipeline-overview.svg)
-- CTA 阶段示意与单轮 KV 实测放大：[cta-pipeline.png](./cta-pipeline.png) · [cta-pipeline.svg](./cta-pipeline.svg)
-- 同一 CTA 的全部 4 个 warp、64 轮 KV 和写回：[cta-full-timeline.png](./cta-full-timeline.png) · [矢量图下载（SVG gzip）](./cta-full-timeline.svg.gz)
+- 整个算子流水线与无打点耗时：[pipeline-overview.png](./pipeline-overview.png) · [pipeline-overview.svg](./pipeline-overview.svg) · [可编辑 draw.io](./pipeline-overview.drawio)
+- CTA 阶段示意与单轮 KV 实测放大：[cta-pipeline.png](./cta-pipeline.png) · [cta-pipeline.svg](./cta-pipeline.svg) · [可编辑 draw.io](./cta-pipeline.drawio)
+- 同一 CTA 的全部 4 个 warp、64 轮 KV 和写回：[cta-full-timeline.png](./cta-full-timeline.png) · [矢量图下载（SVG gzip）](./cta-full-timeline.svg.gz) · [可编辑 draw.io](./cta-full-timeline.drawio)
+
+**[下载三页合一的 draw.io 文件](./fmha-v2-pipeline-all.drawio)**：在 GitHub 文件页选择 Download raw file，随后在 [diagrams.net](https://app.diagrams.net/) 中选择“文件 → 从设备打开”，也可用 draw.io 桌面版打开。底部标签切换三页。
+
+draw.io 版从同一份测量数据重建，文字、方框、箭头、柱形和时间条均为原生可编辑对象。完整 CTA 时间线按版本分层、按 warp 分组；进入分组后可以选择单个阶段，悬停或右键“编辑数据”可查看其版本、warp、step、起止周期和持续周期。异步窗口用虚线框表示。为了适合编辑，布局重新排版，数值与样本选择保持一致。手动拉伸时间条或修改标签不会自动重算数据；原始测量仍以 JSON 为准。
 
 ![优化前后算子流水线](./pipeline-overview.png)
 
@@ -25,6 +29,10 @@
 | 初版 | `481a4e4a` | cp.async，QK 深度分 4 片、PV 分 2 片，O 经共享内存中转 |
 | TMA 中间版 | `28fa8310` | 完整 tile、直接输出、TMA、causal 调度；仍用旧准备与 Q 补齐 |
 | dev-3 | `1c73959e` | 沿用 TMA；接入分块 scale / packed head-major，Q 与 KV 独立长度 |
+
+TMA 中间版是已经优化 attention 内核、仍保留旧准备流程的历史对照版本。它用于拆开两组变化：初版→中间版观察完整 tile、Q 复用、TMA 预取、直接输出和 CTA 调度的合计效果；中间版→dev-3 观察融合准备、布局、分块 scale 和独立 Q/KV 长度的合计效果。它不是 dev-3 运行时额外经过的一层，也不是“只打开 TMA”这一项的消融实验。
+
+以 Q=KV=4096 为例，中间版 attention 为 0.503777 ms，dev-3 为 0.513957 ms，后者略慢 2.02%；但整条流水线从 0.773923 ms 降至 0.619992 ms，下降 19.89%。这说明该样例中 dev-3 的额外收益主要在数据准备流程，不能只看 attention 内核判断整体速度。
 
 三版使用相同原始输入。初版与中间版使用相同逐张量 FP8 量化；dev-3 改用每 head、每 64 token 的量化，因此它与初版并非逐 bit 相同的数值路径。
 
@@ -101,3 +109,5 @@
 测量和打点脚本保留本次实验结构，依赖隔离的三个源码 worktree、编译产物路径（`libraries.json`）、SGLang 的新旧适配器、`materialized_fp8_quantize` 和本地第 23 层激活文件。这些外部运行依赖与激活数据未随文档上传；脚本不是任意机器上直接重跑的独立测试。
 
 `visualize.py` 可从本目录压缩后的 trace 与汇总 JSON 重画图，无需 GPU。中文字体使用已安装的 Noto Sans CJK SC / Noto Sans SC，或通过 `FMHA_PIPELINE_FONT` 指定字体文件；本目录不附带字体。报告中的 PNG 可直接在 GitHub 查看，SVG 可下载。
+
+[export_drawio.py](./export_drawio.py) 复用 `visualize.py` 的数据和 trace 分段逻辑，生成三个独立 `.drawio` 文件及三页合一文件，无需 GPU。使用 draw.io 标准压缩 XML 保存；解压后为原生 mxGraph 图元，未嵌入 PNG/SVG 图片。编辑器使用本机中文字体显示文本。
