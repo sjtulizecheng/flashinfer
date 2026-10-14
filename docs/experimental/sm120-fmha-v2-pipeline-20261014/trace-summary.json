@@ -1,0 +1,188 @@
+[
+  {
+    "variant": "baseline",
+    "case": "dense4096",
+    "sample": 6,
+    "cta_cycles_samples": [
+      413496,
+      404456,
+      393035,
+      386879,
+      377530,
+      390486,
+      391150
+    ],
+    "cta_cycles_median": 391150,
+    "observer_ms": {
+      "clean": 0.7685148679293119,
+      "compiled_trace_disabled": 0.8516588756016322,
+      "trace_enabled": 0.8530747495378767
+    },
+    "observer_overhead_pct": 11.00302481283193,
+    "stages_cycles_warp0": {
+      "load": 36881,
+      "wait": 98224,
+      "qk": 107146,
+      "scale": 5224,
+      "softmax": 45082,
+      "pack": 5235,
+      "pv": 82945,
+      "write": 3025
+    }
+  },
+  {
+    "variant": "tma_padded",
+    "case": "dense4096",
+    "sample": 6,
+    "cta_cycles_samples": [
+      349236,
+      342269,
+      339333,
+      340417,
+      339746,
+      338805,
+      340063
+    ],
+    "cta_cycles_median": 340063,
+    "observer_ms": {
+      "clean": 0.4903846302970511,
+      "compiled_trace_disabled": 0.5130560578971074,
+      "trace_enabled": 0.5153362575330233
+    },
+    "observer_overhead_pct": 5.088174811037138,
+    "stages_cycles_warp0": {
+      "load": 19226,
+      "wait": 58407,
+      "qk": 81919,
+      "scale": 7813,
+      "softmax": 50595,
+      "pack": 7569,
+      "pv": 103344,
+      "write": 3838
+    }
+  },
+  {
+    "variant": "dev3",
+    "case": "dense4096",
+    "sample": 2,
+    "cta_cycles_samples": [
+      359520,
+      352523,
+      351235,
+      352574,
+      351221,
+      350557,
+      351041
+    ],
+    "cta_cycles_median": 351235,
+    "observer_ms": {
+      "clean": 0.5025526757967674,
+      "compiled_trace_disabled": 0.5192527670609324,
+      "trace_enabled": 0.5200405890481514
+    },
+    "observer_overhead_pct": 3.4798169612086927,
+    "stages_cycles_warp0": {
+      "load": 19178,
+      "wait": 60844,
+      "qk": 85592,
+      "scale": 15517,
+      "softmax": 50041,
+      "pack": 6775,
+      "pv": 102209,
+      "write": 3900
+    }
+  },
+  {
+    "variant": "baseline",
+    "case": "prefix",
+    "sample": 2,
+    "cta_cycles_samples": [
+      407227,
+      390530,
+      383556,
+      384417,
+      381401,
+      376918,
+      379165
+    ],
+    "cta_cycles_median": 383556,
+    "observer_ms": {
+      "clean": 0.7814684616891961,
+      "compiled_trace_disabled": 0.8635627297794117,
+      "trace_enabled": 0.8639254626105813
+    },
+    "observer_overhead_pct": 10.551545579094634,
+    "stages_cycles_warp0": {
+      "load": 40007,
+      "wait": 91755,
+      "qk": 103874,
+      "scale": 5212,
+      "softmax": 45143,
+      "pack": 5202,
+      "pv": 81844,
+      "write": 3029
+    }
+  },
+  {
+    "variant": "tma_padded",
+    "case": "prefix",
+    "sample": 3,
+    "cta_cycles_samples": [
+      349778,
+      339747,
+      339974,
+      339966,
+      339617,
+      339849,
+      340209
+    ],
+    "cta_cycles_median": 339966,
+    "observer_ms": {
+      "clean": 0.49081914620321304,
+      "compiled_trace_disabled": 0.5106878905460752,
+      "trace_enabled": 0.5107790914075128
+    },
+    "observer_overhead_pct": 4.066659860093513,
+    "stages_cycles_warp0": {
+      "load": 19184,
+      "wait": 58300,
+      "qk": 82485,
+      "scale": 7940,
+      "softmax": 50826,
+      "pack": 7199,
+      "pv": 102879,
+      "write": 3417
+    }
+  },
+  {
+    "variant": "dev3",
+    "case": "prefix",
+    "sample": 1,
+    "cta_cycles_samples": [
+      356787,
+      349359,
+      350456,
+      349250,
+      349049,
+      348515,
+      350111
+    ],
+    "cta_cycles_median": 349359,
+    "observer_ms": {
+      "clean": 0.4644323498010635,
+      "compiled_trace_disabled": 0.48282365955290246,
+      "trace_enabled": 0.4830700382109611
+    },
+    "observer_overhead_pct": 4.01300392142816,
+    "stages_cycles_warp0": {
+      "load": 19154,
+      "wait": 55827,
+      "qk": 86736,
+      "scale": 16500,
+      "softmax": 50145,
+      "pack": 6692,
+      "pv": 103614,
+      "write": 3616
+    }
+  }
+]

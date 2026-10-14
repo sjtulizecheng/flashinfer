@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "relative_l2": 0.06044314429163933,
+    "max_abs": 0.0556640625,
+    "finite": true
+  },
+  "tma_padded": {
+    "relative_l2": 0.06044314429163933,
+    "max_abs": 0.0556640625,
+    "finite": true
+  },
+  "dev3": {
+    "relative_l2": 0.06240386888384819,
+    "max_abs": 0.06640625,
+    "finite": true
+  }
+}

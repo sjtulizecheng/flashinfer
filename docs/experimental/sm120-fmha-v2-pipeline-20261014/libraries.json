@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "clean_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_33a0e5cd89a3a883/glm_sm120_fmha_v2_33a0e5cd89a3a883.so",
+    "trace_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_37d0a3ea84b59834/glm_sm120_fmha_v2_37d0a3ea84b59834.so"
+  },
+  "tma_padded": {
+    "clean_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_230056d76c86fa90/glm_sm120_fmha_v2_230056d76c86fa90.so",
+    "trace_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_c0b24bf759df0a37/glm_sm120_fmha_v2_c0b24bf759df0a37.so"
+  },
+  "dev3": {
+    "clean_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_937eb7a878952d98/glm_sm120_fmha_v2_937eb7a878952d98.so",
+    "trace_library": "/root/.cache/flashinfer/0.6.15.post1/120f/cached_ops/glm_sm120_fmha_v2_c7bb3a20d887106e/glm_sm120_fmha_v2_c7bb3a20d887106e.so"
+  }
+}
