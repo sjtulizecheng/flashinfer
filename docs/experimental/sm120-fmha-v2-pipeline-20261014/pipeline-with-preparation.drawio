@@ -1,4 +1,696 @@
 <?xml version='1.0' encoding='utf-8'?>
-<mxfile host="app.diagrams.net" type="device">
-  <diagram id="fmha-1" name="04 含量化前准备的整体流程">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</diagram>
+<mxfile host="app.diagrams.net" type="device" compressed="false">
+  <diagram id="fmha-1" name="04 准备与 CTA 单轮流水线">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2160" pageHeight="1710" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" value="标题、说明与坐标轴" />
+        <mxCell id="c2" value="FP8 准备 + 一个 CTA：load → QK → online softmax → PV → 写回" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=30;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="24" width="1730" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="Q = KV = 4096 · head 0 · 最后 64 个 Q token · 128 threads / 4 warps · 遍历 64 个 KV tile" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=17;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="77" width="1730" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="量化前上游：RoPE → cache 写入 / 条件性前缀读取 → kv_b_proj 展开（未单独计时，不包含在下方实测中）。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=21;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="125" width="2088" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="独立准备 kernel" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=20;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#e5af51;fontStyle=1;">
+          <mxGeometry x="210" y="180" width="277" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="Attention kernel 内部：初始装载 → 一轮 KV 计算（重复）→ 最终写回" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=20;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="530" y="180" width="1540" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="初版" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=23;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="268" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="QKV 准备（CTA 外）&#10;整张量 scale + 拼接 / 量化&#10;BSHD / 必要时补齐&#10;0.3022 ms（准备单测）" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fbf2e3;strokeColor=#e5af51;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="210" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="cp.async&#10;Q/K 分 4 片&#10;load + wait" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dfecf5;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="523" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c8" target="c9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487" y="296" as="sourcePoint" />
+            <mxPoint x="523" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c11" value="QK MMA&#10;每片读 SMEM&#10;Q 重复装载" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ebe6f2;strokeColor=#8362ae;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="836" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c9" target="c11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="296" as="sourcePoint" />
+            <mxPoint x="836" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c13" value="scale / mask&#10;online softmax&#10;P 转 FP8" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ddefe8;strokeColor=#299c71;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1149" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c11" target="c13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1113" y="296" as="sourcePoint" />
+            <mxPoint x="1149" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c15" value="PV MMA&#10;V 分 2 片&#10;load + wait" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f7e8e6;strokeColor=#cd6f61;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1462" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c13" target="c15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1426" y="296" as="sourcePoint" />
+            <mxPoint x="1462" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c17" value="O 归一化&#10;SMEM 中转&#10;写回 BF16" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e5eaed;strokeColor=#5b7c91;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1775" y="225" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c15" target="c17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1739" y="296" as="sourcePoint" />
+            <mxPoint x="1775" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c19" value="dev-3" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=23;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="451" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" value="QKV 准备（CTA 外）&#10;两个融合 kernel / 分块 scale&#10;拼接 / 量化 / head-major&#10;0.1398 ms（准备单测）" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fbf2e3;strokeColor=#e5af51;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="210" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" value="TMA Q/K&#10;Q 初始装载&#10;寄存器复用" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dfecf5;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="523" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c20" target="c21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487" y="479" as="sourcePoint" />
+            <mxPoint x="523" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c23" value="QK MMA&#10;完整 K tile&#10;提前发起 V" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ebe6f2;strokeColor=#8362ae;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="836" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c21" target="c23">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="479" as="sourcePoint" />
+            <mxPoint x="836" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c25" value="scale / mask&#10;online softmax&#10;预取下一块 K" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ddefe8;strokeColor=#299c71;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1149" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c26" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c23" target="c25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1113" y="479" as="sourcePoint" />
+            <mxPoint x="1149" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c27" value="PV MMA&#10;V 逐片读寄存器&#10;消费整块 V" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f7e8e6;strokeColor=#cd6f61;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1462" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c25" target="c27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1426" y="479" as="sourcePoint" />
+            <mxPoint x="1462" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c29" value="O 归一化&#10;寄存器直接&#10;写回 BF16" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e5eaed;strokeColor=#5b7c91;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1775" y="408" width="277" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" value="" edge="1" parent="1" style="strokeColor=#56677c;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;" source="c27" target="c29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1739" y="479" as="sourcePoint" />
+            <mxPoint x="1775" y="479" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c31" value="上方为阶段示意，非时间比例；QK → softmax → PV 对每个 KV tile 重复。初版也有 cp.async 预取。&#10;两版均为 FP8 × FP8 MMA、FP32 累加与 softmax。dev-3 在循环中额外消费分块 scale。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="560" width="2088" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" value="初版 → dev-3：准备 0.3022 → 0.1398 ms  ｜  Attention 0.7821 → 0.5140 ms  ｜  连跑 1.1067 → 0.6200 ms（−43.98%）" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ddefe8;strokeColor=#299c71;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=21;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="36" y="618" width="2088" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" value="clock64 实测放大：第 33 个 KV tile，warp 0" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=23;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="683" width="1728" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" parent="0" value="初版 FMHA-v2：第 33 个 KV tile" />
+        <mxCell id="c35" value="初版 FMHA-v2" vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="765" width="185" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c36" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235.0" y="757" as="sourcePoint" />
+            <mxPoint x="235.0" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c37" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499.2857142857143" y="757" as="sourcePoint" />
+            <mxPoint x="499.2857142857143" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c38" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="763.5714285714286" y="757" as="sourcePoint" />
+            <mxPoint x="763.5714285714286" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c39" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1027.857142857143" y="757" as="sourcePoint" />
+            <mxPoint x="1027.857142857143" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c40" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1292.142857142857" y="757" as="sourcePoint" />
+            <mxPoint x="1292.142857142857" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c41" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1556.4285714285716" y="757" as="sourcePoint" />
+            <mxPoint x="1556.4285714285716" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c42" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1820.7142857142858" y="757" as="sourcePoint" />
+            <mxPoint x="1820.7142857142858" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c43" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2085.0" y="757" as="sourcePoint" />
+            <mxPoint x="2085.0" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object id="c44" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="0" end_cycle="74" duration_cycles="74" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="235.0" y="765" width="19.56" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c45" label="" variant="baseline" warp="0" step="33" stage="load" start_cycle="74" end_cycle="198" duration_cycles="124" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="254.56" y="765" width="32.77" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c46" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="198" end_cycle="209" duration_cycles="11" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="287.33" y="765" width="2.91" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c47" label="QK" variant="baseline" warp="0" step="33" stage="qk" start_cycle="209" end_cycle="589" duration_cycles="380" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="290.24" y="765" width="100.43" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c48" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="589" end_cycle="613" duration_cycles="24" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="390.66" y="765" width="6.34" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c49" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="613" end_cycle="648" duration_cycles="35" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="397.01" y="765" width="9.25" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c50" label="" variant="baseline" warp="0" step="33" stage="load" start_cycle="648" end_cycle="753" duration_cycles="105" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="406.26" y="765" width="27.75" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c51" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="753" end_cycle="1044" duration_cycles="291" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="434.01" y="765" width="76.91" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c52" label="QK" variant="baseline" warp="0" step="33" stage="qk" start_cycle="1044" end_cycle="1405" duration_cycles="361" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="510.91" y="765" width="95.41" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c53" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="1405" end_cycle="1429" duration_cycles="24" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="606.32" y="765" width="6.34" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c54" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="1429" end_cycle="1465" duration_cycles="36" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="612.66" y="765" width="9.51" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c55" label="" variant="baseline" warp="0" step="33" stage="load" start_cycle="1465" end_cycle="1572" duration_cycles="107" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="622.18" y="765" width="28.28" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c56" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="1572" end_cycle="1800" duration_cycles="228" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="650.46" y="765" width="60.26" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c57" label="QK" variant="baseline" warp="0" step="33" stage="qk" start_cycle="1800" end_cycle="2173" duration_cycles="373" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="710.71" y="765" width="98.58" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c58" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="2173" end_cycle="2197" duration_cycles="24" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="809.29" y="765" width="6.34" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c59" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="2197" end_cycle="2281" duration_cycles="84" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="815.64" y="765" width="22.2" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c60" label="" variant="baseline" warp="0" step="33" stage="load" start_cycle="2281" end_cycle="2400" duration_cycles="119" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="837.84" y="765" width="31.45" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c61" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="2400" end_cycle="2727" duration_cycles="327" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="869.29" y="765" width="86.42" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c62" label="" variant="baseline" warp="0" step="33" stage="qk" start_cycle="2727" end_cycle="3038" duration_cycles="311" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#8362ae;strokeColor=none;">
+            <mxGeometry x="955.71" y="765" width="82.19" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c63" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="3038" end_cycle="3071" duration_cycles="33" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1037.9" y="765" width="8.72" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c64" label="" variant="baseline" warp="0" step="33" stage="scale" start_cycle="3071" end_cycle="3149" duration_cycles="78" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#e5af51;strokeColor=none;">
+            <mxGeometry x="1046.62" y="765" width="20.61" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c65" label="softmax" variant="baseline" warp="0" step="33" stage="softmax" start_cycle="3149" end_cycle="3853" duration_cycles="704" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#299c71;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="1067.24" y="765" width="186.06" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c66" label="" variant="baseline" warp="0" step="33" stage="pack" start_cycle="3853" end_cycle="3934" duration_cycles="81" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#92cbb1;strokeColor=none;">
+            <mxGeometry x="1253.29" y="765" width="21.41" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c67" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="3934" end_cycle="3950" duration_cycles="16" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1274.7" y="765" width="4.23" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c68" label="" variant="baseline" warp="0" step="33" stage="load" start_cycle="3950" end_cycle="4031" duration_cycles="81" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="1278.93" y="765" width="21.41" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c69" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="4031" end_cycle="4059" duration_cycles="28" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1300.34" y="765" width="7.4" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c70" label="PV" variant="baseline" warp="0" step="33" stage="pv" start_cycle="4059" end_cycle="4736" duration_cycles="677" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cd6f61;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="1307.74" y="765" width="178.92" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c71" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="4736" end_cycle="4767" duration_cycles="31" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1486.66" y="765" width="8.19" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c72" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="4767" end_cycle="4798" duration_cycles="31" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1494.85" y="765" width="8.19" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c73" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="4798" end_cycle="5351" duration_cycles="553" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1503.04" y="765" width="146.15" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c74" label="PV" variant="baseline" warp="0" step="33" stage="pv" start_cycle="5351" end_cycle="5975" duration_cycles="624" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cd6f61;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="1649.19" y="765" width="164.91" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c75" label="" variant="baseline" warp="0" step="33" stage="wait" start_cycle="5975" end_cycle="6009" duration_cycles="34" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c34" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1814.11" y="765" width="8.99" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c76" label="V 首片：issue → wait" start_cycle="2400" end_cycle="4059" tooltip="V 首片：issue → wait | 2400 → 4059 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="869.29" y="814" width="438.45" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c77" label="V 尾片：issue → wait" start_cycle="4031" end_cycle="5351" tooltip="V 尾片：issue → wait | 4031 → 5351 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c34" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="1300.34" y="856" width="348.86" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="c78" parent="0" value="TMA 中间版：第 33 个 KV tile" />
+        <mxCell id="c79" value="TMA 中间版" vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="937" width="185" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c80" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235.0" y="929" as="sourcePoint" />
+            <mxPoint x="235.0" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c81" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499.2857142857143" y="929" as="sourcePoint" />
+            <mxPoint x="499.2857142857143" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c82" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="763.5714285714286" y="929" as="sourcePoint" />
+            <mxPoint x="763.5714285714286" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c83" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1027.857142857143" y="929" as="sourcePoint" />
+            <mxPoint x="1027.857142857143" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c84" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1292.142857142857" y="929" as="sourcePoint" />
+            <mxPoint x="1292.142857142857" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c85" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1556.4285714285716" y="929" as="sourcePoint" />
+            <mxPoint x="1556.4285714285716" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c86" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1820.7142857142858" y="929" as="sourcePoint" />
+            <mxPoint x="1820.7142857142858" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c87" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2085.0" y="929" as="sourcePoint" />
+            <mxPoint x="2085.0" y="1062" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object id="c88" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="0" end_cycle="51" duration_cycles="51" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="235.0" y="937" width="13.48" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c89" label="" variant="tma_padded" warp="0" step="33" stage="load" start_cycle="51" end_cycle="336" duration_cycles="285" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="248.48" y="937" width="75.32" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c90" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="336" end_cycle="525" duration_cycles="189" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="323.8" y="937" width="49.95" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c91" label="QK" variant="tma_padded" warp="0" step="33" stage="qk" start_cycle="525" end_cycle="1920" duration_cycles="1395" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="373.75" y="937" width="368.68" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c92" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="1920" end_cycle="2227" duration_cycles="307" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="742.43" y="937" width="81.14" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c93" label="" variant="tma_padded" warp="0" step="33" stage="scale" start_cycle="2227" end_cycle="2349" duration_cycles="122" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#e5af51;strokeColor=none;">
+            <mxGeometry x="823.56" y="937" width="32.24" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c94" label="softmax" variant="tma_padded" warp="0" step="33" stage="softmax" start_cycle="2349" end_cycle="3140" duration_cycles="791" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#299c71;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="855.81" y="937" width="209.05" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c95" label="" variant="tma_padded" warp="0" step="33" stage="pack" start_cycle="3140" end_cycle="3241" duration_cycles="101" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#92cbb1;strokeColor=none;">
+            <mxGeometry x="1064.86" y="937" width="26.69" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c96" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="3241" end_cycle="3284" duration_cycles="43" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1091.55" y="937" width="11.36" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c97" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="3284" end_cycle="3469" duration_cycles="185" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1102.91" y="937" width="48.89" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c98" label="PV" variant="tma_padded" warp="0" step="33" stage="pv" start_cycle="3469" end_cycle="5020" duration_cycles="1551" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cd6f61;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="1151.81" y="937" width="409.91" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c99" label="" variant="tma_padded" warp="0" step="33" stage="wait" start_cycle="5020" end_cycle="5062" duration_cycles="42" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c78" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1561.71" y="937" width="11.1" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c100" label="整块 V：issue → wait" start_cycle="336" end_cycle="3469" tooltip="整块 V：issue → wait | 336 → 3469 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="323.8" y="986" width="828.01" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c101" label="下一块 K：issue → 下一轮 wait" start_cycle="2227" end_cycle="5683" tooltip="下一块 K：issue → 下一轮 wait | 2227 → 5683 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c78" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#8362ae;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="823.56" y="1028" width="913.37" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="c102" parent="0" value="dev-3 优化版：第 33 个 KV tile" />
+        <mxCell id="c103" value="dev-3 优化版" vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=19;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=1;">
+          <mxGeometry x="36" y="1109" width="185" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="c104" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235.0" y="1101" as="sourcePoint" />
+            <mxPoint x="235.0" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c105" value="0" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="225.0" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c106" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499.2857142857143" y="1101" as="sourcePoint" />
+            <mxPoint x="499.2857142857143" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c107" value="1" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="489.29" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c108" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="763.5714285714286" y="1101" as="sourcePoint" />
+            <mxPoint x="763.5714285714286" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c109" value="2" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="753.57" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c110" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1027.857142857143" y="1101" as="sourcePoint" />
+            <mxPoint x="1027.857142857143" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c111" value="3" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1017.86" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c112" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1292.142857142857" y="1101" as="sourcePoint" />
+            <mxPoint x="1292.142857142857" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c113" value="4" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1282.14" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c114" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1556.4285714285716" y="1101" as="sourcePoint" />
+            <mxPoint x="1556.4285714285716" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c115" value="5" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1546.43" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c116" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1820.7142857142858" y="1101" as="sourcePoint" />
+            <mxPoint x="1820.7142857142858" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c117" value="6" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1810.71" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="c118" value="" edge="1" parent="1" style="strokeColor=#d9e0e8;strokeWidth=1;endArrow=none;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2085.0" y="1101" as="sourcePoint" />
+            <mxPoint x="2085.0" y="1234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c119" value="7" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="2075.0" y="1239" width="70" height="28" as="geometry" />
+        </mxCell>
+        <object id="c120" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="0" end_cycle="42" duration_cycles="42" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="235.0" y="1109" width="11.1" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c121" label="" variant="dev3" warp="0" step="33" stage="load" start_cycle="42" end_cycle="323" duration_cycles="281" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#348ac1;strokeColor=none;">
+            <mxGeometry x="246.1" y="1109" width="74.26" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c122" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="323" end_cycle="517" duration_cycles="194" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="320.36" y="1109" width="51.27" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c123" label="QK" variant="dev3" warp="0" step="33" stage="qk" start_cycle="517" end_cycle="1754" duration_cycles="1237" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="371.64" y="1109" width="326.92" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c124" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="1754" end_cycle="2046" duration_cycles="292" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="698.56" y="1109" width="77.17" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c125" label="" variant="dev3" warp="0" step="33" stage="scale" start_cycle="2046" end_cycle="2466" duration_cycles="420" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#e5af51;strokeColor=none;">
+            <mxGeometry x="775.73" y="1109" width="111.0" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c126" label="softmax" variant="dev3" warp="0" step="33" stage="softmax" start_cycle="2466" end_cycle="3260" duration_cycles="794" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#299c71;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="886.73" y="1109" width="209.84" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c127" label="" variant="dev3" warp="0" step="33" stage="pack" start_cycle="3260" end_cycle="3445" duration_cycles="185" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#92cbb1;strokeColor=none;">
+            <mxGeometry x="1096.57" y="1109" width="48.89" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c128" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="3445" end_cycle="3498" duration_cycles="53" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1145.46" y="1109" width="14.01" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c129" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="3498" end_cycle="3723" duration_cycles="225" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1159.47" y="1109" width="59.46" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c130" label="PV" variant="dev3" warp="0" step="33" stage="pv" start_cycle="3723" end_cycle="5457" duration_cycles="1734" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cd6f61;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=15;align=center;verticalAlign=middle;spacing=6;fontColor=#ffffff;spacing=0;whiteSpace=nowrap;">
+            <mxGeometry x="1218.94" y="1109" width="458.27" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c131" label="" variant="dev3" warp="0" step="33" stage="wait" start_cycle="5457" end_cycle="5499" duration_cycles="42" placeholders="1" tooltip="%variant% | warp %warp% | step %step% | %stage%&#10;%start_cycle% → %end_cycle% cycles；持续 %duration_cycles% cycles（含打点开销）">
+          <mxCell vertex="1" parent="c102" style="fillColor=#b9c1cc;strokeColor=none;">
+            <mxGeometry x="1677.21" y="1109" width="11.1" height="34" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c132" label="整块 V：issue → wait" start_cycle="323" end_cycle="3723" tooltip="整块 V：issue → wait | 323 → 3723 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="320.36" y="1158" width="898.57" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="c133" label="下一块 K：issue → 下一轮 wait" start_cycle="2046" end_cycle="6135" tooltip="下一块 K：issue → 下一轮 wait | 2046 → 6135 cycles；这是重叠窗口，不是 DMA 实际耗时">
+          <mxCell vertex="1" parent="c102" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ffffff;strokeColor=#8362ae;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=14;align=center;verticalAlign=middle;spacing=6;dashed=1;dashPattern=5 3;strokeWidth=2;">
+            <mxGeometry x="775.73" y="1200" width="1080.66" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="c134" value="距本轮开始的 SM clock cycles（×1000）；三行采用相同的周期比例。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=17;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="235" y="1280" width="1850" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c135" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#348ac1;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="36" y="1333" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c136" value="load / 预取发起" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="68" y="1328" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c137" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#b9c1cc;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="556" y="1333" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c138" value="等待 / 同步 / 控制" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="588" y="1328" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c139" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#8362ae;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="1076" y="1333" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c140" value="QK：SMEM load + MMA" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1108" y="1328" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c141" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e5af51;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="1596" y="1333" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c142" value="scale / mask" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1628" y="1328" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c143" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#299c71;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="36" y="1373" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c144" value="online softmax / O 重缩放" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="68" y="1368" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c145" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#92cbb1;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="556" y="1373" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c146" value="P 转 FP8" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="588" y="1368" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c147" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#cd6f61;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="1076" y="1373" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c148" value="PV：SMEM load + MMA" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1108" y="1368" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c149" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#5b7c91;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;">
+          <mxGeometry x="1596" y="1373" width="22" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c150" value="最终归一化 / 写回" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#243247;fontStyle=0;">
+          <mxGeometry x="1628" y="1368" width="482" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="c151" value="虚线框为 issue → 观察到 wait 返回的窗口，不是 DMA 精确时长。QK / PV 段包含 SMEM 读取、发射、等待及打点开销。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="1415" width="2088" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="c152" value="共享内存 / CTA&#10;64 KiB → 48 KiB + 16 B&#10;共享内存允许驻留：1 → 2 CTA / SM" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#dfecf5;strokeColor=#348ac1;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="36" y="1482" width="674" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="c153" value="无打点 NCU 实测&#10;占用率 8.33% → 16.56%&#10;local load / store 均为 0" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#ddefe8;strokeColor=#299c71;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="743" y="1482" width="674" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="c154" value="观测限制&#10;打点使整核耗时增加约 3.5%～11.0%&#10;阶段占比不能直接作为单项优化收益" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#fbf2e3;strokeColor=#e5af51;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=18;align=center;verticalAlign=middle;spacing=6;rounded=1;arcSize=10;strokeWidth=1;">
+          <mxGeometry x="1450" y="1482" width="674" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="c155" value="编辑提示：色块是独立对象；悬停查看周期，右键“编辑数据”查看阶段属性。缩放时间条不会自动重算测量数值。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=16;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="1613" width="2088" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c156" value="准备与 Attention 顺序执行；TMA overlap 在 Attention 内。组件单测不能相加替代连跑。ms 为无打点全核耗时，cycles 为单 CTA 打点样本。" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=none;strokeColor=none;fontColor=#243247;fontFamily=Noto Sans CJK SC,Noto Sans SC,Microsoft YaHei,PingFang SC,Arial;fontSize=17;align=center;verticalAlign=middle;spacing=6;align=left;spacing=0;fontColor=#56677c;fontStyle=0;">
+          <mxGeometry x="36" y="1660" width="2088" height="32" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>

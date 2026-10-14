@@ -313,147 +313,6 @@ def overview():
     return page
 
 
-def preparation_overview():
-    """One-page flow including unmeasured work before Q/K/V quantization."""
-    page = Page("04 含量化前准备的整体流程", 1920, 1200)
-    ms = bycase["dense4096"]["ms"]
-    prep_drop = 100 * (1 - ms["prepare_new"] / ms["prepare_old"])
-    attn_drop = 100 * (1 - ms["dev3_attention"] / ms["baseline_attention"])
-    total_drop = 100 * (1 - ms["dev3_pipeline"] / ms["baseline_pipeline"])
-    page.text(60, 32, 1800, 60, "FMHA-v2：从量化前准备到 Attention 输出", 40, True)
-    page.text(
-        60,
-        103,
-        1800,
-        36,
-        "SM120 / RTX PRO 5000 · GLM 第 23 层真实激活 · Q = KV = 4096 · 初版 → dev-3",
-        23,
-        color=MUTED,
-    )
-    page.box(
-        60,
-        162,
-        1800,
-        90,
-        f"02 + 03 连跑实测：{ms['baseline_pipeline']:.4f} ms → "
-        f"{ms['dev3_pipeline']:.4f} ms     耗时下降 {total_drop:.2f}%",
-        "#218574",
-        32,
-    )
-    columns = [(220, 400), (690, 500), (1260, 600)]
-    for (x, w), title in zip(
-        columns,
-        (
-            "01  量化前准备",
-            "02  Q/K/V 量化与布局准备",
-            "03  Attention → BF16 输出",
-        ),
-        strict=True,
-    ):
-        page.text(x, 278, w, 40, title, 26, True)
-
-    def card(x, y, w, title, detail, timing, color):
-        parent = page.rect(
-            x,
-            y,
-            w,
-            240,
-            fill="#ffffff",
-            stroke=color,
-            extra="rounded=1;arcSize=9;strokeWidth=2;",
-        )
-        page.rect(0, 0, w, 60, fill=color, parent=parent, extra="rounded=1;arcSize=9;")
-        page.text(20, 10, w - 40, 40, title, 25, True, parent=parent, color="#ffffff")
-        page.text(20, 77, w - 40, 100, detail, 22, parent=parent)
-        page.text(20, 185, w - 40, 40, timing, 28, True, parent=parent, color=color)
-        return parent
-
-    for i, y in enumerate((338, 674)):
-        old = i == 0
-        color = "#68788d" if old else "#218574"
-        page.text(
-            60, y + 65, 145, 50, "优化前" if old else "优化后", 31, True, color=color
-        )
-        page.text(60, y + 121, 145, 40, "初版" if old else "dev-3", 25, color=MUTED)
-        a = card(
-            220,
-            y,
-            400,
-            "上游处理（合并为一个 stage）",
-            "RoPE 与 cache 写入\n有前缀时读取压缩 cache\nkv_b_proj 展开各 head 的 K/V",
-            "—  未单独测量",
-            "#68788d",
-        )
-        b = card(
-            690,
-            y,
-            500,
-            "整张量动态 scale" if old else "每 head / 64 token 动态 scale",
-            "独立 abs / amax + scale 运算\npack：拼接 K、量化 Q/K/V\n写 BSHD；前缀 / 变长时补齐"
-            if old
-            else "两个融合 kernel：Q 与 K/V\n求 scale + 拼接 + 量化\n写 head-major；保留真实长度",
-            f"{ms['prepare_old' if old else 'prepare_new']:.4f} ms  ·  准备单测",
-            "#287fa8",
-        )
-        c = card(
-            1260,
-            y,
-            600,
-            "初版 FMHA-v2" if old else "FMHA-v2 dev-3",
-            "cp.async 分片装载 Q/K/V\nQK → online softmax → P 转 FP8 → PV\nO 经共享内存中转，再写回"
-            if old
-            else "完整 tile + TMA 预取；Q 寄存器复用\nQK → online softmax → P 转 FP8 → PV\n读取分块 scale；O 从寄存器直接写回",
-            f"{ms['baseline_attention' if old else 'dev3_attention']:.4f} ms  ·  Attention 单测",
-            "#7958a1",
-        )
-        page.line(620, y + 120, 690, y + 120, MUTED, a, b)
-        page.line(1190, y + 120, 1260, y + 120, MUTED, b, c)
-        page.text(220, y + 254, 400, 35, "01 不包含在右侧连跑计时中", 21, color=MUTED)
-        page.rect(
-            690,
-            y + 253,
-            1170,
-            47,
-            f"02 + 03 连跑实测：{ms['baseline_pipeline' if old else 'dev3_pipeline']:.4f} ms",
-            fill="#f2f6f8",
-            size=25,
-            extra="fontStyle=1;",
-        )
-    page.text(220, 984, 400, 38, "流程方框不按耗时比例绘制", 21, color=MUTED)
-    page.text(
-        690, 980, 500, 44, f"准备耗时下降 {prep_drop:.2f}%", 28, True, color="#287fa8"
-    )
-    page.text(
-        1260,
-        980,
-        600,
-        44,
-        f"Attention 耗时下降 {attn_drop:.2f}%",
-        28,
-        True,
-        color="#7958a1",
-    )
-    page.line(60, 1050, 1860, 1050)
-    page.text(
-        60,
-        1070,
-        1800,
-        40,
-        "执行关系：01 → 02 → 03；量化准备与 Attention 顺序执行。TMA 搬运 / 计算重叠发生在 03 内部。",
-        23,
-    )
-    page.text(
-        60,
-        1120,
-        1800,
-        50,
-        "计时口径：组件单测不能相加替代连跑实测。数据来自 latency.json，无打点、5 轮中位数；不是服务 E2E / QPS。",
-        22,
-        color=MUTED,
-    )
-    return page
-
-
 def trace_bar(
     page,
     intervals,
@@ -501,10 +360,17 @@ def trace_bar(
         )
 
 
-def cta_pipeline(traces):
-    page = Page("02 CTA 阶段与单轮放大", 1800, 1520)
+def cta_pipeline(traces, include_preparation=False):
+    page = Page(
+        "04 准备与 CTA 单轮流水线" if include_preparation else "02 CTA 阶段与单轮放大",
+        2160 if include_preparation else 1800,
+        1710 if include_preparation else 1520,
+    )
+    shift = 160 if include_preparation else 0
     page.title(
-        "一个 CTA 内部：搬运、两次 MMA 与 online softmax",
+        "FP8 准备 + 一个 CTA：load → QK → online softmax → PV → 写回"
+        if include_preparation
+        else "一个 CTA 内部：搬运、两次 MMA 与 online softmax",
         "Q = KV = 4096 · head 0 · 最后 64 个 Q token · 128 threads / 4 warps · 遍历 64 个 KV tile",
     )
     old = [
@@ -521,37 +387,102 @@ def cta_pipeline(traces):
         ("PV MMA\nV 逐片读寄存器\n消费整块 V", "pv"),
         ("O 归一化\n寄存器直接\n写回 BF16", "write"),
     ]
-    for y, name, nodes in [(145, "初版", old), (310, "dev-3", new)]:
+    if include_preparation:
+        ms = bycase["dense4096"]["ms"]
+        old.insert(
+            0,
+            (
+                "QKV 准备（CTA 外）\n整张量 scale + 拼接 / 量化\nBSHD / 必要时补齐\n"
+                f"{ms['prepare_old']:.4f} ms（准备单测）",
+                "scale",
+            ),
+        )
+        new.insert(
+            0,
+            (
+                "QKV 准备（CTA 外）\n两个融合 kernel / 分块 scale\n拼接 / 量化 / head-major\n"
+                f"{ms['prepare_new']:.4f} ms（准备单测）",
+                "scale",
+            ),
+        )
+        page.text(
+            36,
+            125,
+            2088,
+            45,
+            "量化前上游：RoPE → cache 写入 / 条件性前缀读取 → kv_b_proj 展开（未单独计时，不包含在下方实测中）。",
+            21,
+            color=MUTED,
+        )
+        page.text(210, 180, 277, 32, "独立准备 kernel", 20, True, color=COLORS["scale"])
+        page.text(
+            530,
+            180,
+            1540,
+            32,
+            "Attention kernel 内部：初始装载 → 一轮 KV 计算（重复）→ 最终写回",
+            20,
+            True,
+        )
+    rows = (
+        [(225, "初版", old), (408, "dev-3", new)]
+        if include_preparation
+        else [(145, "初版", old), (310, "dev-3", new)]
+    )
+    for y, name, nodes in rows:
         page.text(36, y + 43, 160, 40, name, 23, True)
         previous = None
         for i, (label, kind) in enumerate(nodes):
             x = 210 + i * 313
-            node = page.box(x, y, 277, 126, label, COLORS[kind], 19)
+            node = page.box(
+                x, y, 277, 142 if include_preparation else 126, label, COLORS[kind], 19
+            )
             if previous:
-                page.line(x - 36, y + 63, x, y + 63, MUTED, previous, node)
+                center = y + (71 if include_preparation else 63)
+                page.line(x - 36, center, x, center, MUTED, previous, node)
             previous = node
     page.text(
         36,
-        452,
-        1728,
+        560 if include_preparation else 452,
+        2088 if include_preparation else 1728,
         48,
         "上方为阶段示意，非时间比例；QK → softmax → PV 对每个 KV tile 重复。初版也有 cp.async 预取。\n两版均为 FP8 × FP8 MMA、FP32 累加与 softmax。dev-3 在循环中额外消费分块 scale。",
         16,
         color=MUTED,
     )
-    page.text(36, 523, 1728, 36, "clock64 实测放大：第 33 个 KV tile，warp 0", 23, True)
+    if include_preparation:
+        page.box(
+            36,
+            618,
+            2088,
+            54,
+            f"初版 → dev-3：准备 {ms['prepare_old']:.4f} → {ms['prepare_new']:.4f} ms  ｜  "
+            f"Attention {ms['baseline_attention']:.4f} → {ms['dev3_attention']:.4f} ms  ｜  "
+            f"连跑 {ms['baseline_pipeline']:.4f} → {ms['dev3_pipeline']:.4f} ms（−43.98%）",
+            COLORS["softmax"],
+            21,
+        )
+    page.text(
+        36,
+        523 + shift,
+        1728,
+        36,
+        "clock64 实测放大：第 33 个 KV tile，warp 0",
+        23,
+        True,
+    )
     maximum = max(
         (max(d[0, 33, 44], d[0, 34, 22]) if version != "baseline" else d[0, 33, 44])
         - d[0, 33, 0]
         for version, (d, _, _) in traces.items()
     )
     xmax = math.ceil(maximum / 1000) * 1000
-    x0, width = 235, 1480
+    x0, width = 235, 1850 if include_preparation else 1480
     scale = width / xmax
     for i, version in enumerate(VERSIONS):
         d, partition, _ = traces[version]
         origin = d[0, 33, 0]
-        y = 605 + i * 172
+        y = 605 + shift + i * 172
         layer = page.layer(NAMES[i] + "：第 33 个 KV tile")
         page.text(36, y, 185, 45, NAMES[i], 19, True, layer)
         for cycle in range(0, xmax + 1, 1000):
@@ -593,17 +524,23 @@ def cta_pipeline(traces):
             )
     page.text(
         x0,
-        1120,
+        1120 + shift,
         width,
         30,
         "距本轮开始的 SM clock cycles（×1000）；三行采用相同的周期比例。",
         17,
     )
-    page.legend(36, 1168, list(COLORS), columns=4)
+    page.legend(
+        36,
+        1168 + shift,
+        list(COLORS),
+        columns=4,
+        width=520 if include_preparation else 430,
+    )
     page.text(
         36,
-        1255,
-        1728,
+        1255 + shift,
+        2088 if include_preparation else 1728,
         43,
         "虚线框为 issue → 观察到 wait 返回的窗口，不是 DMA 精确时长。QK / PV 段包含 SMEM 读取、发射、等待及打点开销。",
         16,
@@ -624,16 +561,34 @@ def cta_pipeline(traces):
         ),
     ]
     for i, (label, kind) in enumerate(cards):
-        page.box(36 + i * 587, 1322, 552, 112, label, COLORS[kind], 18)
+        page.box(
+            36 + i * (707 if include_preparation else 587),
+            1322 + shift,
+            674 if include_preparation else 552,
+            112,
+            label,
+            COLORS[kind],
+            18,
+        )
     page.text(
         36,
-        1453,
-        1728,
+        1453 + shift,
+        2088 if include_preparation else 1728,
         40,
         "编辑提示：色块是独立对象；悬停查看周期，右键“编辑数据”查看阶段属性。缩放时间条不会自动重算测量数值。",
         16,
         color=MUTED,
     )
+    if include_preparation:
+        page.text(
+            36,
+            1660,
+            2088,
+            32,
+            "准备与 Attention 顺序执行；TMA overlap 在 Attention 内。组件单测不能相加替代连跑。ms 为无打点全核耗时，cycles 为单 CTA 打点样本。",
+            17,
+            color=MUTED,
+        )
     return page
 
 
@@ -727,8 +682,10 @@ def full_timeline(traces):
     return page
 
 
-def save_drawio(path, pages):
+def save_drawio(path, pages, uncompressed=False):
     document = ET.Element("mxfile", host="app.diagrams.net", type="device")
+    if uncompressed:
+        document.set("compressed", "false")
     for index, page in enumerate(pages):
         xml = ET.tostring(page.model, encoding="unicode")
         # draw.io's standard page encoding: URI encode, raw deflate, then base64.
@@ -740,7 +697,10 @@ def save_drawio(path, pages):
         diagram = ET.SubElement(
             document, "diagram", id=f"fmha-{index + 1}", name=page.name
         )
-        diagram.text = base64.b64encode(compressed).decode()
+        if uncompressed:
+            diagram.append(ET.fromstring(xml))
+        else:
+            diagram.text = base64.b64encode(compressed).decode()
     ET.indent(document)
     path.write_bytes(
         ET.tostring(document, encoding="utf-8", xml_declaration=True) + b"\n"
@@ -754,7 +714,7 @@ if __name__ == "__main__":
         overview(),
         cta_pipeline(traces),
         full_timeline(traces),
-        preparation_overview(),
+        cta_pipeline(traces, include_preparation=True),
     ]
     for name, page in zip(
         (
@@ -766,5 +726,12 @@ if __name__ == "__main__":
         pages,
         strict=True,
     ):
-        save_drawio(ROOT / f"{name}.drawio", [page])
+        save_drawio(
+            ROOT / f"{name}.drawio",
+            [page],
+            uncompressed=name == "pipeline-with-preparation",
+        )
+    save_drawio(
+        ROOT / "cta-pipeline-with-preparation.drawio", [pages[-1]], uncompressed=True
+    )
     save_drawio(ROOT / "fmha-v2-pipeline-all.drawio", pages)
