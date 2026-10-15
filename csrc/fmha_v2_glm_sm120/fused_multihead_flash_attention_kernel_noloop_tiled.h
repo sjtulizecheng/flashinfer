@@ -518,8 +518,17 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
 #pragma unroll
       for (int ki = 0; ki < Mma_tile_o::MMAS_K; ++ki) {
         int p_ki = bmm2_k + ki;
-        smem_v.load(frag_v[ki], ki);
-        fmha::gemm(acc_o, frag_p[p_ki], frag_v[ki]);
+        if constexpr (Kernel_traits::USE_TMA_GLM) {
+#pragma unroll
+          for (int ni = 0; ni < Mma_tile_o::VALID_MMAS_N; ++ni) {
+            typename Smem_tile_v::Fragment v;
+            smem_v.load_one(v, ni, ki);
+            acc_o[0][ni].mma(frag_p[p_ki][0], v);
+          }
+        } else {
+          smem_v.load(frag_v[ki], ki);
+          fmha::gemm(acc_o, frag_p[p_ki], frag_v[ki]);
+        }
       }
 
       // Make sure we are done reading the data (smem).
@@ -575,8 +584,17 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
 #pragma unroll
       for (int ki = 0; ki < BMM2_TAIL_MMAS_K_BOUND; ++ki) {
         int p_ki = BMM2_MAIN_MMAS_K_BOUND + ki;
-        smem_v.load(frag_v[ki], ki);
-        fmha::gemm(acc_o, frag_p[p_ki], frag_v[ki]);
+        if constexpr (Kernel_traits::USE_TMA_GLM) {
+#pragma unroll
+          for (int ni = 0; ni < Mma_tile_o::VALID_MMAS_N; ++ni) {
+            typename Smem_tile_v::Fragment v;
+            smem_v.load_one(v, ni, ki);
+            acc_o[0][ni].mma(frag_p[p_ki][0], v);
+          }
+        } else {
+          smem_v.load(frag_v[ki], ki);
+          fmha::gemm(acc_o, frag_p[p_ki], frag_v[ki]);
+        }
       }
 
       smem_v.move_to_next_read_buffer();
