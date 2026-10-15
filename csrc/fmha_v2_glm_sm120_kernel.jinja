@@ -9,24 +9,25 @@
 
 using Launch_params = bert::Fused_multihead_attention_launch_params;
 using Params = bert::Fused_multihead_attention_params_v2;
+using Tma_params = fmha::Sm120_tma_params<Params>;
 
 template <int Mask>
 using Glm_traits = fmha::Kernel_traits_v2_q_k_v<
     fmha::Ada_qmma_e4m3_fp32_traits,
     64, 256, 256, 64, 4, 1, 1,
-    0x4007u | 0x200, Mask, true, fmha::{{ output_dtype }}_t>;
+    0xc007u | 0x200, Mask, true, fmha::{{ output_dtype }}_t>;
 
-__global__ void glm_{{ output_dtype }}_causal(const Params params) {
+__global__ void glm_{{ output_dtype }}_causal(const __grid_constant__ Tma_params params) {
   fused_multihead_attention::device_flash_attention_nl_tiled<Glm_traits<3>>(params);
 }
 
-__global__ void glm_{{ output_dtype }}_padding(const Params params) {
+__global__ void glm_{{ output_dtype }}_padding(const __grid_constant__ Tma_params params) {
   fused_multihead_attention::device_flash_attention_nl_tiled<Glm_traits<2>>(params);
 }
 
 void run_fmha_v2_flash_attention_e4m3_fp32_64_64_S_q_k_v_256x256_output_{{ output_dtype }}_sm120_nl_tiled(
     const Params& input_params, const Launch_params& launch_params, cudaStream_t stream) {
-  auto const& params = input_params;
+  auto params = fmha::make_sm120_tma_params(input_params);
   using Traits = Glm_traits<2>;
   static_assert(Traits::Cta_tile_o::N == 256);
   dim3 grid((params.s + 63) / 64, params.h, params.b);
