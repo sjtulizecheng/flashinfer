@@ -37,6 +37,14 @@ using Attention_mask_type = fmha::Attention_mask_type;
 using Attention_input_layout = fmha::Attention_input_layout;
 using Kv_block_array = fmha::Kv_block_array;
 
+extern void run_fmha_v2_flash_attention_e4m3_fp32_64_64_S_q_k_v_256x256_output_bf16_sm120_nl_tiled(
+    const bert::Fused_multihead_attention_params_v2& params,
+    const bert::Fused_multihead_attention_launch_params& launch_params, cudaStream_t stream);
+
+extern void run_fmha_v2_flash_attention_e4m3_fp32_64_64_S_q_k_v_256x256_output_fp16_sm120_nl_tiled(
+    const bert::Fused_multihead_attention_params_v2& params,
+    const bert::Fused_multihead_attention_launch_params& launch_params, cudaStream_t stream);
+
 namespace flashinfer {
 
 static inline void set_params(bert::Fused_multihead_attention_params_v2& params,
