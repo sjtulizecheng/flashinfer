@@ -364,6 +364,8 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
         smem_v.move_to_next_write_buffer();
       }
       if constexpr (Kernel_traits::USE_TMA_GLM) {
+        tma.expect(1, 16384);
+        tma.load(kernel_params.glm_v, 2, kv_loop, 1);
         tma.wait(0, ((kv_loop - kv_loop_start) / 64) & 1);
       } else {
         gmem_v.load(smem_v);
@@ -522,8 +524,6 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
     // BMM2 tail loop
     {
       if constexpr (Kernel_traits::USE_TMA_GLM) {
-        tma.expect(1, 16384);
-        tma.load(kernel_params.glm_v, 2, kv_loop, 1);
         if (kv_loop + 64 < kv_loop_end) {
           tma.expect(0, 16384);
           tma.load(kernel_params.glm_k, 1, kv_loop + 64, 0);
