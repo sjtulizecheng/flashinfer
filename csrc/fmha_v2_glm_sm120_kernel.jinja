@@ -14,7 +14,7 @@ template <int Mask>
 using Glm_traits = fmha::Kernel_traits_v2_q_k_v<
     fmha::Ada_qmma_e4m3_fp32_traits,
     64, 256, 256, 64, 4, 1, 1,
-    0x1007u | 0x200, Mask, true, fmha::{{ output_dtype }}_t>;
+    0x0007u | 0x200, Mask, true, fmha::{{ output_dtype }}_t>;
 
 __global__ void glm_{{ output_dtype }}_causal(const Params params) {
   fused_multihead_attention::device_flash_attention_nl_tiled<Glm_traits<3>>(params);
