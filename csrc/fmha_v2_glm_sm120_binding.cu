@@ -26,6 +26,7 @@
 #include <cassert>
 #include <cstring>
 #include <numeric>
+#include <string>
 
 #include "tvm_ffi_utils.h"
 
@@ -70,7 +71,7 @@ static inline void set_params(bert::Fused_multihead_attention_params_v2& params,
                               // attention sinks.
                               void* attention_sinks_d, void* cu_kv_seqlens_d, void* cu_q_seqlens_d,
                               void* o_packed_d, void* p_d, void* s_d, void* softmax_stats_d,
-                              void* scale_bmm2_d,
+                              void* scale_bmm1_d, void* scale_bmm2_d,
                               // scale factors
                               float const scale_bmm1, float const scale_softmax,
                               float const scale_bmm2, float const softcapping_scale_bmm1,
@@ -191,13 +192,11 @@ static inline void set_params(bert::Fused_multihead_attention_params_v2& params,
   } else {
     set_alpha(params.scale_bmm1, fused_scale_bmm1, scale_type1);
   }
+  params.scale_bmm1_d = reinterpret_cast<uint32_t*>(scale_bmm1_d);
   set_alpha(params.scale_softmax, scale_softmax, scale_softmax_type);
   set_alpha(params.scale_bmm2, scale_bmm2, scale_type2);
   params.scale_bmm2_d = reinterpret_cast<uint32_t*>(scale_bmm2_d);
   params.softcapping_scale_bmm1 = softcapping_scale_bmm1;
-
-  FMHA_CHECK_CUDA(cudaMemcpy(params.scale_bmm2_d, &params.scale_bmm2, sizeof(uint32_t),
-                             cudaMemcpyHostToDevice));
 
   // attention type, h_kv < h if MQA or GQA
   params.h_kv = h_kv;
