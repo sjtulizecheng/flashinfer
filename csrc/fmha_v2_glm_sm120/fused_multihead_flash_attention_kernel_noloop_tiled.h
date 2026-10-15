@@ -399,6 +399,13 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
       __syncthreads();
     }
 
+    if constexpr (Kernel_traits::USE_TMA_GLM) {
+      if (kv_loop + 64 < kv_loop_end) {
+        tma.expect(0, 16384);
+        tma.load(kernel_params.glm_k, 1, kv_loop + 64, 0);
+      }
+    }
+
     // Store the P matrix.
 #if defined(STORE_P)
     gmem_p.store(acc_p);
@@ -524,10 +531,6 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
     // BMM2 tail loop
     {
       if constexpr (Kernel_traits::USE_TMA_GLM) {
-        if (kv_loop + 64 < kv_loop_end) {
-          tma.expect(0, 16384);
-          tma.load(kernel_params.glm_k, 1, kv_loop + 64, 0);
-        }
         tma.wait(1, ((kv_loop - kv_loop_start) / 64) & 1);
       } else {
         if (kv_loop + Cta_tile_p::N < kv_loop_end) {
