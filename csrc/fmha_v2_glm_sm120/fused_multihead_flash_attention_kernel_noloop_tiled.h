@@ -288,6 +288,11 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
   constexpr int BMM2_MAIN_MMAS_K_BOUND = Kernel_traits::TOTAL_BMM2_MMAS_K - BMM2_TAIL_MMAS_K_BOUND;
 
   fmha::Sm120_tma_transport tma(smem_, tma_bars, bidh, false);
+  if constexpr (Kernel_traits::USE_TMA_GLM) {
+    tma.wait(0, 0);
+#pragma unroll
+    for (int ki = 0; ki < Mma_tile_p::MMAS_K; ++ki) smem_q.load(frag_q[ki], ki);
+  }
   for (int kv_loop = kv_loop_start; kv_loop < kv_loop_end; kv_loop += Cta_tile_p::N) {
     bool const first_step = (kv_loop == kv_loop_start);
     // It is possible that all tokens are masked out (sliding-window-attention).
@@ -337,7 +342,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
 #pragma unroll
       for (int ki = 0; ki < Mma_tile_p::MMAS_K; ++ki) {
         // Load the fragments for Q/K inner tile
-        smem_q.load(frag_q[ki], ki);
+        if constexpr (!Kernel_traits::USE_TMA_GLM) smem_q.load(frag_q[ki], ki);
         smem_k.load(frag_k[ki], ki);
 
         // Do the math for the values already in registers.
@@ -374,7 +379,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
 #pragma unroll
       for (int ki = 0; ki < Mma_tile_p::MMAS_K; ++ki) {
         // Load the fragments for Q/K inner tile
-        smem_q.load(frag_q[ki], ki);
+        if constexpr (!Kernel_traits::USE_TMA_GLM) smem_q.load(frag_q[ki], ki);
         smem_k.load(frag_k[ki], ki);
 
         // Do the math for the values already in registers.
