@@ -22,7 +22,7 @@ namespace fused_multihead_attention {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-template <typename Kernel_traits, typename Params>
+template <typename Kernel_traits, bool PACKED_INPUT = false, typename Params>
 inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_params) {
   auto const& params = [&]() -> decltype(auto) {
     if constexpr (Kernel_traits::USE_TMA_GLM) {
@@ -31,6 +31,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
       return (kernel_params);
     }
   }();
+  static_assert(!PACKED_INPUT || Kernel_traits::USE_TMA_GLM);
   // The instruction traits.
   using Traits_p = typename Kernel_traits::Traits_p;
   using Traits_o = typename Kernel_traits::Traits_o;
@@ -197,10 +198,10 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
   gmem_v.move_by_offset(kv_loop_start);
 
   if constexpr (Kernel_traits::USE_TMA_GLM) {
-    fmha::Sm120_tma_transport tma(smem_, tma_bars, bidh);
+    fmha::Sm120_tma_transport tma(smem_, tma_bars, bidh, PACKED_INPUT ? 0 : bidb);
     tma.expect(0, 32768);
-    tma.load(kernel_params.glm_q, 0, q_loop * 64, 0);
-    tma.load(kernel_params.glm_k, 1, kv_loop_start, 0);
+    tma.load(kernel_params.glm_q, 0, (PACKED_INPUT ? binfo.sum_s : 0) + q_loop * 64, 0);
+    tma.load(kernel_params.glm_k, 1, (PACKED_INPUT ? binfo.sum_s_kv : 0) + kv_loop_start, 0);
   } else {
     // Trigger the loads for Q.
     gmem_q.load(smem_q);
@@ -293,7 +294,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
   constexpr int BMM2_TAIL_MMAS_K_BOUND = Mma_tile_o::MMAS_K;
   constexpr int BMM2_MAIN_MMAS_K_BOUND = Kernel_traits::TOTAL_BMM2_MMAS_K - BMM2_TAIL_MMAS_K_BOUND;
 
-  fmha::Sm120_tma_transport tma(smem_, tma_bars, bidh, false);
+  fmha::Sm120_tma_transport tma(smem_, tma_bars, bidh, PACKED_INPUT ? 0 : bidb, false);
   if constexpr (Kernel_traits::USE_TMA_GLM) {
     tma.wait(0, 0);
 #pragma unroll
@@ -371,7 +372,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
       }
       if constexpr (Kernel_traits::USE_TMA_GLM) {
         tma.expect(1, 16384);
-        tma.load(kernel_params.glm_v, 2, kv_loop, 1);
+        tma.load(kernel_params.glm_v, 2, (PACKED_INPUT ? binfo.sum_s_kv : 0) + kv_loop, 1);
         tma.wait(0, ((kv_loop - kv_loop_start) / 64) & 1);
       } else {
         gmem_v.load(smem_v);
@@ -408,7 +409,7 @@ inline __device__ void device_flash_attention_nl_tiled(Params const& kernel_para
     if constexpr (Kernel_traits::USE_TMA_GLM) {
       if (kv_loop + 64 < kv_loop_end) {
         tma.expect(0, 16384);
-        tma.load(kernel_params.glm_k, 1, kv_loop + 64, 0);
+        tma.load(kernel_params.glm_k, 1, (PACKED_INPUT ? binfo.sum_s_kv : 0) + kv_loop + 64, 0);
       }
     }
 
