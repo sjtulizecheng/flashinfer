@@ -16,6 +16,7 @@ Results:
 - We would get these example json files under fi_trace_out directory:
 fused_add_rmsnorm_h5120.json
 fused_add_rmsnorm_quant_h7168.json
+fmha_v2_prefill_glm_h20_d256.json
 gdn_decode_qk4_v8_d128.json
 gdn_mtp_qk4_v8_d128.json
 gdn_prefill_qk4_v8_d128.json
@@ -1348,4 +1349,30 @@ with contextlib.suppress(Exception):
         is_neox=False,
         page_size=_rqfap_PS,
         kv_layout="NHD",
+    )
+
+
+with contextlib.suppress(Exception):
+    from flashinfer.prefill import fmha_v2_prefill_glm
+
+    _glm_q = (
+        torch.randn(20, 82, 256, device=device).to(torch.float8_e4m3fn).transpose(0, 1)
+    )
+    _glm_k = (
+        torch.randn(20, 226, 256, device=device).to(torch.float8_e4m3fn).transpose(0, 1)
+    )
+    _glm_v = torch.randn_like(_glm_k.float()).to(torch.float8_e4m3fn)
+    fmha_v2_prefill_glm(
+        _glm_q,
+        _glm_k,
+        _glm_v,
+        torch.tensor([0, 65, 82], dtype=torch.int32, device=device),
+        torch.tensor([0, 129, 226], dtype=torch.int32, device=device),
+        torch.ones(2, 20, 2, device=device),
+        torch.ones(2, 20, 3, device=device),
+        torch.ones(2, 20, 3, device=device),
+        65,
+        129,
+        out=torch.empty(82, 20, 256, dtype=torch.bfloat16, device=device),
+        softmax_stats=torch.empty(82, 20, 2, device=device),
     )

@@ -1916,3 +1916,58 @@ trtllm_ragged_attention_deepseek_trace = TraceTemplate(
     reference=_trtllm_ragged_attention_deepseek_reference,
     init=_trtllm_ragged_attention_deepseek_init,
 )
+
+
+class _GlmPrefillTraceTemplate(TraceTemplate):
+    def build_fi_trace_fn(self, fi_api):
+        trace = super().build_fi_trace_fn(fi_api)
+
+        def fi_trace(save_dir=None, **kwargs):
+            # 0.6.15 does not fall back to Tensor.dtype when dtype_from is
+            # absent. Scope this default to GLM instead of changing all traces.
+            if kwargs.get("out") is None:
+                kwargs["out"] = torch.empty(0, dtype=torch.bfloat16)
+            return trace(save_dir=save_dir, **kwargs)
+
+        return fi_trace
+
+
+fmha_v2_prefill_glm_trace = _GlmPrefillTraceTemplate(
+    op_type="trtllm_paged",
+    name_prefix="fmha_v2_prefill_glm",
+    description="SM120 packed head-major E4M3 prefill with per-head 64-token scales.",
+    axes={
+        "total_q": Var(),
+        "total_kv": Var(),
+        "batch_size": Var(),
+        "indptr_len": Var(),
+        "num_heads": Const(abbrev="h"),
+        "head_dim": Const(abbrev="d"),
+        "q_blocks": Var(),
+        "kv_blocks": Var(),
+    },
+    inputs={
+        "query": Tensor(["total_q", "num_heads", "head_dim"]),
+        "key": Tensor(["total_kv", "num_heads", "head_dim"]),
+        "value": Tensor(["total_kv", "num_heads", "head_dim"]),
+        "cu_seqlens_q": Tensor(["indptr_len"], dtype="int32"),
+        "cu_seqlens_kv": Tensor(["indptr_len"], dtype="int32"),
+        "q_scale": Tensor(["batch_size", "num_heads", "q_blocks"], dtype="float32"),
+        "k_scale": Tensor(["batch_size", "num_heads", "kv_blocks"], dtype="float32"),
+        "v_scale": Tensor(["batch_size", "num_heads", "kv_blocks"], dtype="float32"),
+        "max_seqlen_q": Scalar("int32"),
+        "max_seqlen_kv": Scalar("int32"),
+        "softmax_scale": Scalar("float32"),
+        "causal": Scalar("bool"),
+        "out": Tensor(["total_q", "num_heads", "head_dim"], optional=True),
+        "softmax_stats": Tensor(
+            ["total_q", "num_heads", "2"], dtype="float32", optional=True
+        ),
+    },
+    outputs={
+        "out": Tensor(
+            ["total_q", "num_heads", "head_dim"], dtype_from="out", dtype="bfloat16"
+        )
+    },
+    tags=["stage:prefill", "backend:trtllm"],
+)

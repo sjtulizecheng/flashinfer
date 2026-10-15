@@ -252,3 +252,5 @@ if _os.environ.get("FLASHINFER_TRACE_APPLY", "0") not in ("0", "", "false", "Fal
             "(continuing without Trace Apply).",
             _trace_apply_err,
         )
+
+from .prefill import fmha_v2_prefill_glm as fmha_v2_prefill_glm

@@ -46,6 +46,7 @@ from .jit.attention import (
     gen_trtllm_gen_fmha_module,
     gen_trtllm_fmha_v2_sm120_module,
 )
+from .jit.attention.fmha_v2_glm_sm120 import gen_fmha_v2_glm_sm120_module
 from .jit.attention.utils import _is_nvfp4_kv_dtype
 from .jit.cascade import gen_cascade_module
 from .jit.cpp_ext import get_cuda_version
@@ -574,6 +575,7 @@ def gen_all_modules(
             jit_specs.append(gen_fp4_quantization_sm110_module())
         if has_sm120:
             jit_specs.append(gen_fp4_quantization_sm120_module())
+            jit_specs.append(gen_fmha_v2_glm_sm120_module())
         if has_sm121:
             jit_specs.append(gen_fp4_quantization_sm121_module())
         if has_sm120 or has_sm121:

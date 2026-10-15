@@ -1,0 +1,145 @@
+{
+  "name": "fmha_v2_prefill_glm_h20_d256",
+  "description": "SM120 packed head-major E4M3 prefill with per-head 64-token scales.",
+  "op_type": "trtllm_paged",
+  "tags": [
+    "fi_api:flashinfer.prefill.fmha_v2_prefill_glm",
+    "stage:prefill",
+    "backend:trtllm"
+  ],
+  "axes": {
+    "total_q": {
+      "type": "var"
+    },
+    "total_kv": {
+      "type": "var"
+    },
+    "batch_size": {
+      "type": "var"
+    },
+    "indptr_len": {
+      "type": "var"
+    },
+    "num_heads": {
+      "type": "const",
+      "value": 20
+    },
+    "head_dim": {
+      "type": "const",
+      "value": 256
+    },
+    "q_blocks": {
+      "type": "var"
+    },
+    "kv_blocks": {
+      "type": "var"
+    }
+  },
+  "inputs": {
+    "query": {
+      "shape": [
+        "total_q",
+        "num_heads",
+        "head_dim"
+      ],
+      "dtype": "float8_e4m3fn"
+    },
+    "key": {
+      "shape": [
+        "total_kv",
+        "num_heads",
+        "head_dim"
+      ],
+      "dtype": "float8_e4m3fn"
+    },
+    "value": {
+      "shape": [
+        "total_kv",
+        "num_heads",
+        "head_dim"
+      ],
+      "dtype": "float8_e4m3fn"
+    },
+    "cu_seqlens_q": {
+      "shape": [
+        "indptr_len"
+      ],
+      "dtype": "int32"
+    },
+    "cu_seqlens_kv": {
+      "shape": [
+        "indptr_len"
+      ],
+      "dtype": "int32"
+    },
+    "q_scale": {
+      "shape": [
+        "batch_size",
+        "num_heads",
+        "q_blocks"
+      ],
+      "dtype": "float32"
+    },
+    "k_scale": {
+      "shape": [
+        "batch_size",
+        "num_heads",
+        "kv_blocks"
+      ],
+      "dtype": "float32"
+    },
+    "v_scale": {
+      "shape": [
+        "batch_size",
+        "num_heads",
+        "kv_blocks"
+      ],
+      "dtype": "float32"
+    },
+    "max_seqlen_q": {
+      "shape": null,
+      "dtype": "int32"
+    },
+    "max_seqlen_kv": {
+      "shape": null,
+      "dtype": "int32"
+    },
+    "softmax_scale": {
+      "shape": null,
+      "dtype": "float32"
+    },
+    "causal": {
+      "shape": null,
+      "dtype": "bool"
+    },
+    "out": {
+      "shape": [
+        "total_q",
+        "num_heads",
+        "head_dim"
+      ],
+      "dtype": "bfloat16",
+      "optional": true
+    },
+    "softmax_stats": {
+      "shape": [
+        "total_q",
+        "num_heads",
+        "2"
+      ],
+      "dtype": "float32",
+      "optional": true
+    }
+  },
+  "outputs": {
+    "out": {
+      "shape": [
+        "total_q",
+        "num_heads",
+        "head_dim"
+      ],
+      "dtype": "bfloat16"
+    }
+  },
+  "check": "def standard_check(\n    reference_outputs: Any,\n    actual_outputs: Any,\n    *,\n    rtol: Optional[float] = None,\n    atol: Optional[float] = None,\n    max_mismatch_pct: float = 0.0,\n    min_cos_sim: Optional[float] = 1.0 - 1e-3,\n) -> bool:\n    \"\"\"Default trace correctness check used when a template does not override it.\"\"\"\n    from flashinfer.trace import default_check\n\n    return default_check(\n        reference_outputs,\n        actual_outputs,\n        rtol=rtol,\n        atol=atol,\n        max_mismatch_pct=max_mismatch_pct,\n        min_cos_sim=min_cos_sim,\n    )\n"
+}
