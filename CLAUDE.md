@@ -4,6 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
+### Local 0.6.15.post1 SM120 GLM backport
+
+`fmha_v2_prefill_glm` is an additive packed FP8 prefill API. Its JIT generator
+is `flashinfer/jit/attention/fmha_v2_glm_sm120.py`, with its own module URI.
+Only that module places the private `csrc/fmha_v2_glm_sm120` header overlay
+before the unchanged `csrc/fmha_v2` headers. Do not add the overlay to global
+include paths: the released scalar FMHA and other operators must keep their
+original implementation. The overlay is copied from commit `1c73959e`; the
+launcher instantiates only GLM 256/256, block-scaled causal/padding kernels.
+
+Preserve `0.6.15.post1` as the package version to keep the existing cubin and
+JIT-cache version checks valid. Identify local wheels with a wheel build tag.
+`FLASHINFER_BUILD_NO_PIP=1` skips build-time cuTile compiler downloads; it does
+not change runtime requirements or disable cuTile. This build uses `BUILD_NVEP=0`
+like the existing single-GPU installation; multi-GPU EP needs separate validation.
+
 FlashInfer is a GPU kernel library for LLM serving that uses **JIT (Just-In-Time) compilation by default**. This means kernel code changes are automatically picked up without reinstalling the package - extremely convenient for development.
 
 ## Quick Reference

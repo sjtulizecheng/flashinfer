@@ -560,6 +560,11 @@ def _install_cuda_tile_compile_deps() -> None:
     first time the user calls a cuTile kernel — a better failure mode than
     aborting the install entirely.
     """
+    if os.getenv("FLASHINFER_BUILD_NO_PIP") == "1":
+        print(
+            "[BUILD] FLASHINFER_BUILD_NO_PIP=1; compile dependencies left as installed"
+        )
+        return
     wheels = [
         "nvidia-cuda-nvcc<13.4,>=13.2",
         "nvidia-cuda-tileiras<13.4,>=13.2",
